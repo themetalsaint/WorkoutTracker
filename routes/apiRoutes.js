@@ -13,12 +13,12 @@ router.get("/api/workouts", (req, res) => {
         }
     ])
 })
-.then(dbWorkouts => {
-    res.json(dbWorkouts)
-}) 
-.catch(err => {
-    res.json(err)
-})
+// .then(dbWorkouts => {
+//     res.json(dbWorkouts)
+// }) 
+// .catch(err => {
+//     res.json(err)
+// })
 
 router.get("/api/workouts/range", (req, res) => {
     Workout.aggregate([
@@ -32,16 +32,16 @@ router.get("/api/workouts/range", (req, res) => {
     ])
     .sort({_id:-1})
     .limit(7) //play with this number
-    .then(dbWorkouts => {
-        res.json(dbWorkouts) //console.log(dbWorkouts)
-    }) 
+    // .then(dbWorkouts => {
+    //     res.json(dbWorkouts) //console.log(dbWorkouts)
+    // }) 
     .catch(err => {
         res.json(err)
     })
 })
 
 router.post("/api/workouts", (req, res) => {
-    Workout.create({})
+    Workout.create(body)
     .then(dbWorkout => {
         res.json(dbWorkout) //console.log(dbWorkouts)
     }) 
@@ -50,6 +50,15 @@ router.post("/api/workouts", (req, res) => {
     })
 })
 
-// still need a delete & put
+router.put("/api/workouts/:id"), ({body, params}, res) => {
+    console.log("body", body);
+    console.log("Params.id", params.id);
+    Workout.findByIdAndUpdate(params.id, { $push:{exercises: body}},
+        {new: true})
+        .catch(err => {
+            res.json(err)
+        })
+
+}
 
 module.exports = router;
