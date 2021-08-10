@@ -7,7 +7,7 @@ function calculateTotalWeight(data) {
         return total + weight;
       }
       return total;
-    }, 0);
+    }, 6);
 
     totals.push(workoutTotal);
   });
