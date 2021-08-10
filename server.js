@@ -14,7 +14,7 @@ app.use(morgan("dev"));
 
 
 app.use(express.static("public"));
-mongoose.connect("mongodb://localhost/workout", {
+mongoose.connect("mongodb+srv://themetalsaint:fu5566le@cluster0.z5xhc.mongodb.net/Workout?retryWrites=true&w=majority"||"mongodb://localhost/workout", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
