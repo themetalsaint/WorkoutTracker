@@ -61,7 +61,7 @@ router.post("/api/workouts", ({body}, res) => {
     })
 })
 
-router.put("/api/workouts/:id"), ({body, params}, res) => {
+router.put("/api/workouts/:id", ({body, params}, res) => {
     console.log("body", body);
     console.log("Params.id", params.id);
     Workout.findByIdAndUpdate(params.id, { $push:{exercises: body}},
@@ -73,6 +73,6 @@ router.put("/api/workouts/:id"), ({body, params}, res) => {
             res.json(err)
         })
 
-}
+})
 
 module.exports = router;
