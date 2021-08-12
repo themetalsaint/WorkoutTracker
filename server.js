@@ -14,7 +14,7 @@ app.use(morgan("dev"));
 
 
 app.use(express.static("public"));
-mongoose.connect("mongodb+srv://themetalsaint:fu5566le@cluster0.z5xhc.mongodb.net/Workout?retryWrites=true&w=majority"||"mongodb://localhost/workout", {
+mongoose.connect(process.env.MONGODB_URI||"mongodb+srv://themetalsaint:fu5566le@cluster0.z5xhc.mongodb.net/Workout?retryWrites=true&w=majority"||"mongodb://localhost/workout", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -22,8 +22,7 @@ mongoose.connect("mongodb+srv://themetalsaint:fu5566le@cluster0.z5xhc.mongodb.ne
 })
 
 // routes & listener
-// app.use("./routes/apiRoutes.js");
-// app.use("./routes/htmlRoutes.js");
+
 const mainRoutes = require('./routes/apiRoutes')
 app.use(mainRoutes);
 const pageRoutes = require('./routes/htmlRoutes')

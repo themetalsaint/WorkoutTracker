@@ -20,7 +20,7 @@ router.get("/api/workouts", (req, res) => {
     })
 })
 
-router.get("/api/workouts/range", (req, res) => {
+router.get("/api/workouts/range", ({body}, res) => {
     Workout.aggregate([
         {
             $addFields: {
@@ -32,8 +32,8 @@ router.get("/api/workouts/range", (req, res) => {
     ])
     .sort({_id:-1})
     .limit(7) //play with this number
-    .then(dbWorkouts => {
-        res.json(dbWorkouts) //console.log(dbWorkouts)
+    .then(Workouts => {
+        res.json(Workouts) //console.log(dbWorkouts)
     }) 
     .catch(err => {
         res.json(err)

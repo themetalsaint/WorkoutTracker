@@ -24,13 +24,15 @@ function populateChart(data) {
 
   const labels = data.map(({ day }) => {
     const date = new Date(day);
-
+    console.log(typeof date, "DATE??????");
+    console.log(typeof day, "DAY??????");
     // Use JavaScript's `Intl` object to help format dates
     return new Intl.DateTimeFormat('en-US', {
       weekday: 'short',
       month: 'short',
       day: 'numeric',
     }).format(date);
+   
   });
 
   let lineChart = new Chart(line, {
@@ -109,3 +111,24 @@ function populateChart(data) {
 
 // get all workout data from back-end
 API.getWorkoutsInRange().then(populateChart);
+
+
+
+
+// function calculateTotalDuration(data) {
+//   const totals = [];
+
+//   data.forEach((workout) => {
+//     const workoutTotal = workout.exercises.reduce((total, { type, duration }) => {
+//       if (type ===  'cardio' || type === 'resistance') {
+//         console.log("total + duration", total + duration);
+//         return total + duration;
+//       }
+//       return total;
+//     }, 0);
+    
+//     totals.push(workoutTotal);
+//   });
+
+//   return totals;
+// }
