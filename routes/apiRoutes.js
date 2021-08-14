@@ -1,5 +1,6 @@
 // ***get all workouts
-const router = require("express").Router();
+const express = require("express");
+const router = express.Router();
 const Workout = require("../models/workout.js");
 
 router.get("/api/workouts", (req, res) => {
@@ -20,7 +21,7 @@ router.get("/api/workouts", (req, res) => {
     })
 })
 
-router.get("/api/workouts/range", ({body}, res) => {
+router.get("/api/workouts/range", (req, res) => {
     Workout.aggregate([
         {
             $addFields: {
@@ -40,19 +41,19 @@ router.get("/api/workouts/range", ({body}, res) => {
     })
 })
 
-router.get("/api/workouts", ({body}, res) => {
-    console.log(Workout)
-    Workout.find({})
-      .then(Workouts => {
-        res.json(Workouts);
-      })
-      .catch(err => {
-        res.status(400).json(err);
-      });
-  })
+// router.get("/api/workouts", ({body}, res) => {
+//     console.log(Workout)
+//     Workout.find({})
+//       .then(Workouts => {
+//         res.json(Workouts);
+//       })
+//       .catch(err => {
+//         res.status(400).json(err);
+//       });
+//   })
 
-router.post("/api/workouts", ({body}, res) => {
-    Workout.create(body)
+router.post("/api/workouts", ({body,params}, res) => {
+    Workout.create({})
     .then(Workout => {
         res.json(Workout) //console.log(Workouts)
     }) 

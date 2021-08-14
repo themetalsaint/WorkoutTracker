@@ -14,7 +14,7 @@ app.use(morgan("dev"));
 
 
 app.use(express.static("public"));
-mongoose.connect(process.env.MONGODB_URI||"mongodb+srv://themetalsaint:fu5566le@cluster0.z5xhc.mongodb.net/Workout?retryWrites=true&w=majority"||"mongodb://localhost/workout", {
+mongoose.connect(process.env.MONGODB_URI||"mongodb://localhost/workout", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -31,6 +31,6 @@ app.use(pageRoutes);
 
 
 app.listen(PORT, () => {
-    console.log(`App running on port http://localhost:${PORT}!`);
+    console.log(`App running on port http://localhost:${PORT}`);
 })
 
