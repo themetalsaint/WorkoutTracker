@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const db = require('../models');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/workout', {
+mongoose.connect("mongodb+srv://themetalsaint:fu5566le@cluster0.z5xhc.mongodb.net/WorkoutTracker?retryWrites=true&w=majority"||"mongodb://localhost/workout" || 'mongodb://localhost/workout', {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true,

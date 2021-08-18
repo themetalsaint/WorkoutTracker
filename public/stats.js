@@ -22,16 +22,16 @@ function populateChart(data) {
   const line = document.querySelector('#canvas').getContext('2d');
   const bar = document.querySelector('#canvas2').getContext('2d');
 
-  const labels = data.map(({ day }) => {
-    const date = new Date(day);
+  const labels = data.map(({ date }) => {
+    const day = new Date(date);
     console.log(typeof date, "DATE??????");
-    console.log(typeof day, "DAY??????");
+    // console.log(typeof day, "DAY??????");
     // Use JavaScript's `Intl` object to help format dates
     return new Intl.DateTimeFormat('en-US', {
       weekday: 'short',
       month: 'short',
       day: 'numeric',
-    }).format(date);
+    }).format(day);
    
   });
 
